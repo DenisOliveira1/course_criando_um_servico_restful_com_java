@@ -12,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.edu.denis.dao.NotaDAO;
 import br.edu.denis.entidade.Nota;
@@ -54,9 +55,24 @@ public class NotasService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return lista;// devolve as listas
+		return lista;// devolve a lista
 	}
 	
+	// metodos
+		@GET//
+		@Path("/listxml")// get notas/list
+		@Produces(MediaType.APPLICATION_XML)//precisa da anotacao @XmlRootElementno objeto nota
+		public List<Nota> listarNotasXml() {
+			List<Nota> lista = null;
+
+			try {
+				lista = notaDAO.listarNotas();// acessa o dao iniciado no construtor e pega todas as listas
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return lista;// devolve a lista
+		}
+		
 	@GET
 	@Path("/search/{id}")// get notas/search/2
 	@Produces(MediaType.APPLICATION_JSON) // o metodo abaixo produz um json

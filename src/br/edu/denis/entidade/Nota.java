@@ -1,5 +1,8 @@
 package br.edu.denis.entidade;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement//permite esse objeto ser retornado em formato xml tambem
 public class Nota {
 	
 	//variaveis
