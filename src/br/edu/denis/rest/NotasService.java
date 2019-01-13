@@ -109,6 +109,27 @@ public class NotasService {
 		}
 		return msg;
 	}
+	
+	@POST
+	@Path("/insertxml")	// post notas/insert
+	@Consumes(MediaType.APPLICATION_XML+ CHARSET) // o metodo abaixo recebe um json junto com a requisicao
+	@Produces(MediaType.TEXT_PLAIN) // o metodo abaixo produz um texto
+
+	public String adicionarNotaXml(Nota nota) {
+		String msg = "";
+
+		System.out.println(nota.getTitulo());
+
+		try {
+			String idGerado = Integer.toString(notaDAO.adicionarNota(nota));//sempre o retorno par ao usuario devera se ruma string
+			msg = "Nota inserida com sucesso! IdGerado: "+idGerado;
+		} catch (Exception e) {
+			msg = "Erro ao inserir a nota!";
+			e.printStackTrace();
+		}
+		return msg;
+	}
+
 
 	@PUT
 	@Path("/edit/{id}")	// put notas/edit/2
