@@ -1,4 +1,4 @@
-# Course: Curso de RESTful com Java
+# Course: Criando um serviço RESTful com Java
 
 - **Year**: 2019
 - **Platform**: DevMedia
